@@ -1,0 +1,63 @@
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+const ServiceDetailScreen = ({ route, navigation }) => {
+  const { service } = route.params;
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Icon name="arrow-back" size={24} color="#fff" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Service Details</Text>
+      </View>
+      <View style={styles.content}>
+        <Text style={styles.label}>Service Name:</Text>
+        <Text style={styles.value}>{service.name}</Text>
+        <Text style={styles.label}>Price:</Text>
+        <Text style={styles.value}>{service.price} đ</Text>
+        {/* Add more details here if needed */}
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f8f8',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#e91e63',
+    padding: 15,
+    paddingTop: 40, // For status bar padding
+  },
+  backButton: {
+    marginRight: 10,
+  },
+  headerTitle: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  content: {
+    padding: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+  },
+  value: {
+    fontSize: 18,
+    color: '#666',
+    marginBottom: 20,
+  },
+});
+
+export default ServiceDetailScreen;
